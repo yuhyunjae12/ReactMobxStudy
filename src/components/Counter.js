@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import * as service from './../service/api';
 
 // inject('스토어 이름')을 하시면 컴포넌트에서 해당 스토어를 props로 전달 받아 사용 할 수 있습니다.
 // @inject('counter')
@@ -11,6 +12,18 @@ import { observer, inject } from 'mobx-react'
 }))
 @observer
 class Counter extends Component {
+
+    getTitleInfo = async () => {
+
+      const info = await Promise.all([
+        service.getTitle()
+      ]);
+
+      console.log(info[0].data.title);
+      localStorage.setItem('Token',info[0].data.title);
+
+    }
+
     render() {
         //const { counter } =this.props;
         const { number, increase, decrease } = this.props;
@@ -22,6 +35,7 @@ class Counter extends Component {
                 <div>{number}</div>
                 <button onClick={increase}>+1</button>
                 <button onClick={decrease}>-1</button>
+                <button onClick={this.getTitleInfo}>test</button>
             </div>
         )
     }

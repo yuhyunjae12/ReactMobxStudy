@@ -21,8 +21,13 @@ class Headers extends Component {
     callOne(no){
         this.props.callOne(no);
     }
+
     result(){
         console.log(this.props.getUserInfo)
+    }
+
+    getLocal(){
+        console.log(localStorage.getItem('Token'));
     }
 
     render() {
@@ -42,6 +47,9 @@ class Headers extends Component {
                         () => this.result()
                     }
                 >result</button>
+                <button onClick={
+                    ()=> this.getLocal()
+                }>localStorage</button>
             </div>
         )
     }

@@ -13,13 +13,15 @@ import * as service from './../service/api';
 @observer
 class Counter extends Component {
 
+    // async는 비동기 통신일 때 사용
     getTitleInfo = async () => {
 
+      // api 호출 부를 service/api에 선언 해두고 호출
       const info = await Promise.all([
         service.getTitle()
       ]);
 
-      console.log(info[0].data.title);
+      // localStorage에 title정보 저장
       localStorage.setItem('Token',info[0].data.title);
 
     }

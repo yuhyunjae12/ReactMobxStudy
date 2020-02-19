@@ -10,6 +10,7 @@ import { inject, observer } from 'mobx-react';
 @observer
 class App extends Component {
 
+  // auth 결과에 따른 컴포넌트 리턴
   getAuthResult =() =>{
     return AuthStudy(this.props.getUserAuth)
   }

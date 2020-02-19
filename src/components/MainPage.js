@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react';
+import NoDecorator from './NoDecorator';
 
 @inject(stores =>({
     user: stores.usersStore.user,
@@ -12,24 +13,19 @@ import { inject, observer } from 'mobx-react';
 @observer
 class MainPage extends Component {
 
-    constructor(props){
-        super(props)
-        this.state={
-            auth: false
-        }
-    }
-
+    // login() 함수 호출 UsersStore에 auth state -> true
     loginAction = () =>{
         this.props.login()
     }
 
+    // logOut() 함수 호출 UsersStore에 auth state -> false
     logOutAction =() =>{
         this.props.logOut()
     }
 
+    // computed getUserAuth UsersStore에 getter auth state
     getAuth = () =>{
         console.log(this.props.getUserAuth);
-        this.setState({auth: this.props.getUserAuth});
     }
 
     render() {
@@ -39,6 +35,8 @@ class MainPage extends Component {
                 <button onClick={this.loginAction}>login</button>
                 <button onClick={this.getAuth}>getAuth</button>
                 <button onClick={this.logOutAction}>logOut</button>
+                <hr/>
+                <NoDecorator/>
             </div>
         )
     }

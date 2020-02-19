@@ -25,13 +25,9 @@ class Counter extends Component {
     }
 
     render() {
-        //const { counter } =this.props;
         const { number, increase, decrease } = this.props;
         return (
             <div>
-                {/* <div>{counter.number}</div>
-                <button onClick={counter.increase}>+1</button>
-                <button onClick={counter.decrease}>-1</button> */}
                 <div>{number}</div>
                 <button onClick={increase}>+1</button>
                 <button onClick={decrease}>-1</button>
